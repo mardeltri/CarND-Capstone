@@ -93,6 +93,10 @@ The following image shows the architecture of the software stack, that is comple
 ![Final project ros graph](imgs/final-project-ros-graph-v2.png)
 The nodes and their responsibilities are explained in the following.
 
+##  State machine
+
+![State machine](imgs/State_machine.png)
+
 ### Control of Longitudinal and Lateral Vehicle Dynamics: The _twist_controller_-Package
 The twist controller package contains a node that takes care that the vehicle follows a reference track. The control problem is seperated into control of the longitudinal dynamics by adjusting throttle or brake and control of the lateral dynamics by adjusting the steering angle. The result can be observed in a video that can be found [here](https://github.com/sratgh/CarND-Capstone/blob/master/imgs/Mar-27-2020%2012-55-25.mp4).
 In the twist controller package two files are subject to change compared to the original files which can be obtained from Udacity's repository (see above):
@@ -205,7 +209,7 @@ MAX_DECEL = .5
 
 When a traffic waypoint index is received, commanded velocity is decreased gradually from maximum velocity to zero as depicted in the following figure.
 
-![Valid dataset](data/decelerate_waypoints.png)
+![Valid dataset](data/Velocity_coef.png)
 
 ## Installation
 This is the project repo for the final project of the Udacity Self-Driving Car Nanodegree: Programming a Real Self-Driving Car. For more information about the project, see the project introduction [here](https://classroom.udacity.com/nanodegrees/nd013/parts/6047fe34-d93c-4f50-8336-b70ef10cb4b2/modules/e1a23b06-329a-4684-a717-ad476f0d8dff/lessons/462c933d-9f24-42d3-8bdc-a08a5fc866e4/concepts/5ab4b122-83e6-436d-850f-9f4d26627fd9).

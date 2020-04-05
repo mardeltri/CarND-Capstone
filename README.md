@@ -102,7 +102,11 @@ A state machine is created in order to deal with the different situations that a
 
 Below, a flow chart has been included in order to show the transitions between the states. As it can be seen, the car starts in cruise and when it is close to a traffic light it goes to decelerating state. This state can have two different future states: speeding up or stopped. The former is given when the traffic light turns on green while slowing down. The latter is given when the velocity of the car is lower than 1m/s. If the car is stopped it waits until the traffic light turns green. Later it changes to the state speeding up. Once the car is beyond the traffic light, it sets cruise state.
 
-![State machine](imgs/State_machine.png)
+<p align="center">
+  ![State machine](imgs/State_machine.png)
+</p>
+
+
 
 ### Control of Longitudinal and Lateral Vehicle Dynamics: The _twist_controller_-Package
 The twist controller package contains a node that takes care that the vehicle follows a reference track. The control problem is seperated into control of the longitudinal dynamics by adjusting throttle or brake and control of the lateral dynamics by adjusting the steering angle. The result can be observed in a video that can be found [here](https://github.com/sratgh/CarND-Capstone/blob/master/imgs/Mar-27-2020%2012-55-25.mp4).
@@ -215,7 +219,7 @@ LOOKAHEAD_WPS = 200
 MAX_DECEL = .5
 ```
 
-When a traffic waypoint index is received, commanded velocity is decreased gradually from maximum velocity to either zero or its middle value, as depicted in the following figure. In order to define those reference values, two coupled sigmoid functions have been used. With this procedure a smooth trajectory is generated. So that the car is able to slow down in a controlled way.
+When a traffic waypoint index is received, commanded velocity is decreased gradually from maximum velocity to either zero or its middle value, as depicted in the following figure. In order to define those reference values, two coupled sigmoid functions have been used. With this procedure a smooth trajectory is generated. Thus, that the car is able to slow down in a controlled way.
 
 ![Valid dataset](imgs/Velocity_coef.png)
 

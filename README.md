@@ -103,7 +103,7 @@ A state machine is created in order to deal with the different situations that a
 Below, a flow chart has been included in order to show the transitions between the states. As it can be seen, the car starts in cruise and when it is close to a traffic light it goes to decelerating state. This state can have two different future states: speeding up or stopped. The former is given when the traffic light turns on green while slowing down. The latter is given when the velocity of the car is lower than 1m/s. If the car is stopped it waits until the traffic light turns green. Later it changes to the state speeding up. Once the car is beyond the traffic light, it sets cruise state.
 
 <p align="center">
-  ![State machine](imgs/State_machine.png)
+  <img width="349" height="690" src="imgs/State_machine.png">
 </p>
 
 

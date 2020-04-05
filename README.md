@@ -94,6 +94,13 @@ The following image shows the architecture of the software stack, that is comple
 The nodes and their responsibilities are explained in the following.
 
 ##  State machine
+A state machine is created in order to deal with the different situations that are given in our system. Four states have been defined:
+* Cruise: The car is going along the highway with the predefined velocity.
+* Decelerating: It includes the maneuver carried out to slow down the vehicle.
+* Stopped: The car is waiting the traffic light to turn on green.
+* Speeding up: The car is able to go forward so it accelerates.
+
+Below, a flow chart has been included in order to show the transitions between the states. As it can be seen, the car starts in cruise and when it is close to a traffic light it goes to decelerating state. This state can have two different future states: speeding up or stopped. The former is given when the traffic light turns on green while slowing down. The latter is given when the velocity of the car is lower than 1m/s. If the car is stopped it waits until the traffic light turns green. Later it changes to the state speeding up. Once the car is beyond the traffic light, it sets cruise state.
 
 ![State machine](imgs/State_machine.png)
 
@@ -194,6 +201,7 @@ This node is subscribed to the following topics:
 * _base_waypoints_: publishes a list of all waypoints for the track, so this list includes waypoints
                      both before and after the vehicle
 * _traffic_waypoint_: it is the index of the waypoint for nearest upcoming red light's stop line
+* _close_to_tl_: it is a boolean message wich indicates if the car is close to a tl or not.
 
 And it publishes final_waypoints, which are the list of waypoints to be followed.
 
@@ -207,7 +215,7 @@ LOOKAHEAD_WPS = 200
 MAX_DECEL = .5
 ```
 
-When a traffic waypoint index is received, commanded velocity is decreased gradually from maximum velocity to zero as depicted in the following figure.
+When a traffic waypoint index is received, commanded velocity is decreased gradually from maximum velocity to either zero or its middle value, as depicted in the following figure. In order to define those reference values, two coupled sigmoid functions have been used. With this procedure a smooth trajectory is generated. So that the car is able to slow down in a controlled way.
 
 ![Valid dataset](imgs/Velocity_coef.png)
 
